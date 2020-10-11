@@ -272,3 +272,39 @@ def draw_player(p):
     frame_count += 1
     if frame_count + 1 > 30:  # 30 frames to cycle through
         frame_count = 0
+
+
+def player_move_limits(p):
+    if p.player_x <= 475:  # set player limit on west wall
+        p.player_x = 475
+
+    if p.player_x >= 1260:  # set player limit in east wall
+        p.player_x = 1260
+
+    if p.player_y >= 765:  # set player limit in south wall
+        p.player_y = 765
+
+    if p.player_y <= 230:  # set player limit in north wall
+        p.player_y = 230
+
+    if p.player_y <= 315 and p.player_x <= 635:  # set player limit on the jog north-west
+        p.player_y = 315  # bottom wall
+
+    if p.player_y <= 300 and p.player_x <= 645:  # set player limit on the jog north-west
+        p.player_x = 645  # top wall
+
+    if p.player_y <= 315 and p.player_x >= 1100:  # set player limit in the jog north-east
+        p.player_y = 315  # bottom wall
+
+    if p.player_y <= 300 and p.player_x >= 1090:
+        p.player_x = 1090  # top wall
+
+    #  set fireplace limits
+    if 765 <= p.player_x <= 975 and p.player_y >= 675:  # top fireplace
+        p.player_y = 675
+
+    if p.player_y >= 690 and 755 >= p.player_x >= 750:  # west wall
+        p.player_x = 750
+
+    if p.player_y >= 690 and 990 >= p.player_x >= 985:  # east wall
+        p.player_x = 990
