@@ -9,7 +9,7 @@ pygame.init()
 running = True
 clock = pygame.time.Clock()
 
-p = Player(870, 500, 0, 0)  # spawn player at 900, 500 with a change of 0 for x and y
+p = Player(870, 500, 0, 0)  # spawn player at 870, 500 with a change of 0 for x and y
 
 
 def events():
