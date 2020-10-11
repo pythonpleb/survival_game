@@ -22,6 +22,14 @@ fp_floor = pygame.image.load('floor/fireplace_floor.png').convert_alpha()
 # door
 door = pygame.image.load('door/door.png').convert_alpha()
 
+# table
+table = pygame.image.load('npc/table.png').convert_alpha()
+table_shadow = pygame.image.load('npc/table_shadow.png').convert_alpha()
+
+#  resize table
+table = pygame.transform.rotozoom(table, 90, 0.15)  # rotate 90 degrees, scale 15%
+table_shadow = pygame.transform.rotozoom(table_shadow, 90, 0.20)
+
 # resize walls
 wall_corner_top_left = pygame.transform.scale(wall_corner_top_left, (85, 85))
 wall_corner_bot_right = pygame.transform.scale(wall_corner_bot_right, (85, 85))
@@ -54,7 +62,6 @@ frame_count = 0
 # makes animation for fire
 def draw_fire():
     global frame_count
-    # screen.blit(glow, (810, 665))
     screen.blit(fire_animation[frame_count], (810, 720))
     screen.blit(fire_animation[frame_count], (830, 720))
     screen.blit(fire_animation[frame_count], (850, 720))
@@ -70,8 +77,13 @@ def draw_fire():
     screen.blit(fire_animation[frame_count], (900, 710))
     screen.blit(fire_animation[frame_count], (940, 710))
     frame_count += 1
-    if frame_count + 1 > 14:
+    if frame_count + 1 > 14:  # 14 frames cycled through
         frame_count = 0
+
+
+def draw_table():
+    screen.blit(table_shadow, (1340, 520))
+    screen.blit(table, (1350, 535))
 
 
 def floor_builder():
@@ -170,3 +182,4 @@ def build_background():
     floor_builder()
     draw_fire()
     wall_builder()
+    draw_table()
